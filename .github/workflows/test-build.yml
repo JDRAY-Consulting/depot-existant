@@ -1,0 +1,25 @@
+name: Build de test
+on:
+  push:
+    paths:
+      - ".github/workflows/test-build.yml"
+  workflow_dispatch:
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: xenizo-banc-essai/depot-nouveau
+          path: depot-nouveau
+      - name: Rassembler les fichiers
+        run: |
+          mkdir sortie
+          cp README.md sortie/readme-depot-existant.md
+          cp depot-nouveau/README.md sortie/readme-depot-nouveau.md
+          ls -l sortie
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-test
+          path: sortie
