@@ -1,0 +1,16 @@
+name: Demande de modification
+description: Décrire un besoin ou un problème
+title: "[Demande] "
+body:
+  - type: input
+    id: ecran
+    attributes:
+      label: Écran concerné
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+    validations:
+      required: true
